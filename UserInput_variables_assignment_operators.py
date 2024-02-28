@@ -22,7 +22,7 @@ print(name)
 
 print("hello nice to meet you buddy, ", end="\n") #here we're going to print name on new-line by passing 'end' with '\n'
 print(name)
-
+# just
 # all these commetns for small git tutorials refarding staged commit and append,undo etc  
 #first commit
 #second commit 
