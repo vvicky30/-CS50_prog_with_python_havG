@@ -1,0 +1,5 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# for ignoring Virtual python env
+cs50pyenv\*
