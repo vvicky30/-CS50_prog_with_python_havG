@@ -49,5 +49,5 @@ print(f"{b:.3f}") # only print 3 numbers after decimal if we use'.3f'
 '''
 0.9718848024745163
 0.971885
-0.972
+0.972    lst o/p
 '''
