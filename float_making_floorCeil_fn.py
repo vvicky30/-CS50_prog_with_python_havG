@@ -87,5 +87,21 @@ print(round_half_down(12.467,2))#12.47
 print(round_half_up(3412.567,-2))#3400.0
 print(round_half_down(3512.467,-2))#3500.0
 
-print(round_half_up(-0.567))#0.0
-print(round_half_down(-0.467))#
+print(round_half_up(-0.567))#-1.0
+print(round_half_down(-0.467))#0.0
+
+'''
+o/p:
+
+13.0
+12.0
+
+12.57
+12.47
+
+3400.0
+3500.0
+
+-1.0
+0.0
+'''
