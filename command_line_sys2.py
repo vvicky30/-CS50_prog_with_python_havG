@@ -17,7 +17,7 @@ sys.stdout.write("Hello this mesaage is written through sys.stdout")
 stderr: 
 Whenever an exception occurs in Python it is written to sys.stderr. 
 
-This code will print the string “Hello World” to the standard error stream. 
+This code will print the string “"write my error here shortly"” to the standard error stream. 
 The sys.stderr object represents the standard error stream, 
 and the print() function writes the specified strings to the stream.
 '''
