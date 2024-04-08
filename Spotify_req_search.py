@@ -72,8 +72,24 @@ def main():
           searched_art_id = searched_art["id"]  # specifically fetching artist -id from json_file [which is in python dictionary format] ;here we're passing "id" as key
           searched_art_name = searched_art["name"]  # similarly fetching artist name
           print(f"Here we successfuly found Artist with name: {searched_art_name} \nAnd gona retrive top-tracks [in country bydefault: IN] for Artist-id: {searched_art_id}")
-                        
-
+          
+          
+          # for aesthetics :
+          aes_pr= "=" * len(searched_art_name)
+          
+          top_tracks = search_for_top_tracks(token =token, artist_id = searched_art_id)
+          print(f"||========================@{aes_pr}@===========================||") # for aesthetics
+          print(f"||========================@{searched_art_name}@===========================||") # for aesthetics
+          print(f"||                        @{aes_pr}@                           ||") # for aesthetics
+          print(f"|| These are top-tracks of {searched_art_name} in Bydefault country:IN :- ||")
+          print(f"||-------------------------{aes_pr}============================||") # for aesthetics              
+          for track_n, tracks in enumerate(top_tracks):
+              print(F"||{track_n+1}. {tracks['name']}")
+              print(f"||-------------------------{aes_pr}============================||") # for aesthetics
+          print(f"||                        @{aes_pr}@                           ||") # for aesthetics
+          print(f"||========================@{searched_art_name}@===========================||") # for aesthetics
+          print(f"||========================@{aes_pr}@===========================||") # for aesthetics
+          
       
       
     else: # if user entered artist-name with country code ; then its all fine
@@ -93,7 +109,22 @@ def main():
           searched_art_id = searched_art["id"]  # specifically fetching artist -id from json_file [which is in python dictionary format] ;here we're passing "id" as key
           searched_art_name = searched_art["name"]  # similarly fetching artist name
           print(f"Here we successfuly found Artist with name: {searched_art_name} \nAnd gona retrive top-tracks [in Country: {cntry_c}] for Artist-id: {searched_art_id}")
-        
+          
+          # for aesthetics :
+          aes_pr= "=" * len(searched_art_name)
+          
+          top_tracks = search_for_top_tracks(token =token, artist_id = searched_art_id, country_code=cntry_c)
+          print(f"||========================@{aes_pr}@===========================||") # for aesthetics
+          print(f"||========================@{searched_art_name}@===========================||") # for aesthetics
+          print(f"||                        @{aes_pr}@                           ||") # for aesthetics
+          print(f"|| These are top-tracks of {searched_art_name} in ByEntered country:{cntry_c} :- ||")
+          print(f"||-------------------------{aes_pr}============================||") # for aesthetics              
+          for track_n, tracks in enumerate(top_tracks):
+              print(F"||{track_n+1}. {tracks['name']}")
+              print(f"||-------------------------{aes_pr}============================||") # for aesthetics
+          print(f"||                        @{aes_pr}@                           ||") # for aesthetics
+          print(f"||========================@{searched_art_name}@===========================||") # for aesthetics
+          print(f"||========================@{aes_pr}@===========================||") # for aesthetics
   
 
 
@@ -158,7 +189,155 @@ def search_for_artist(token, artist_name , Country_code= "IN"):  #bydefault coun
     else:
         return json_result[0]  # fetching artist info only from python dictionary format of jason file..... 
  
+def search_for_top_tracks(token, artist_id, country_code ="IN"):    
+                                                # passing bydefault country code IN(INDIA) 
+                                                                #in case if user not entered country_code
+    url = f"https://api.spotify.com/v1/artists/{artist_id}/top-tracks?market={country_code}"
+    headers = get_auth_header(token=token)
+    result = get(url=url, headers= headers)
+    json_result = json.loads(result.content)["tracks"]  # only fetcing imp info here its trakcs from python dictionary format of json file.
+    return json_result                                                              
+        
+  
     
-    
-    
+     
 main()
+
+
+'''
+o/p type-1:
+
+PS C:\Users\hp\PycharmProjects\CS50_pythonProg_hav> python  Spotify_req_search.py bbrfd                                                           
+you enter the Artist-name only [Basic-search for top-tracks will be initiated; with default-Country-code set as :IN(INDIA)]
+Artist-name: Bbrfd
+  ____________________________________________
+| No artist with this name exist on spotify... |
+  ============================================
+                                                 \
+                                                  \
+                                                   \
+                                                    .--.
+                                                   |o_o |
+                                                   |:_/ |
+                                                  //   \ \
+                                                 (|     | )
+                                                /'\_   _/`\
+                                                \___)=(___/
+Exit From Main: Try to search another Artist
+
+o/p type-2:
+
+PS C:\Users\hp\PycharmProjects\CS50_pythonProg_hav> python  Spotify_req_search.py             
+  _____________________________________________
+ /                                             \
+| Too few args: please enter either Artist-name |
+| alongwith Country-code                        |
+| or simply enter artist-name (atleast)         |
+ \                                             /
+  =============================================
+                                                  \
+                                                   \
+                                                    \
+                                                     .--.
+                                                    |o_o |
+                                                    |:_/ |
+                                                   //   \ \
+                                                  (|     | )
+                                                 /'\_   _/`\
+                                                 \___)=(___/
+
+o/p type-3:
+
+PS C:\Users\hp\PycharmProjects\CS50_pythonProg_hav> python  Spotify_req_search.py Beatles ca indf
+  _________________________________________________
+ /                                                 \
+| Too many args: please enter Artist-name alongwith |
+|  Country-code only                                |
+ \                                                 /
+  =================================================
+                                                      \
+                                                       \
+                                                        \
+                                                         .--.
+                                                        |o_o |
+                                                        |:_/ |
+                                                       //   \ \
+                                                      (|     | )
+                                                     /'\_   _/`\
+                                                     \___)=(___/
+
+
+o/p type-4:
+
+PS C:\Users\hp\PycharmProjects\CS50_pythonProg_hav> python  Spotify_req_search.py Beatles ca     
+you're all fine for further procedure [Precise-search for top-tracks will be initiated]
+Artist-name: Beatles
+Country-code(Default-IN): CA
+Here we successfuly found Artist with name: The Beatles 
+And gona retrive top-tracks [in Country: CA] for Artist-id: 3WrFJ7ztbogyGnTHbHJFl2
+||========================@===========@===========================||
+||========================@The Beatles@===========================||
+||                        @===========@                           ||
+|| These are top-tracks of The Beatles in ByEntered country:CA :- ||
+||-------------------------=======================================||
+||1. Here Comes The Sun - Remastered 2009
+||-------------------------=======================================||
+||2. Yesterday - Remastered 2009
+||-------------------------=======================================||
+||3. Twist And Shout - Remastered 2009
+||-------------------------=======================================||
+||4. Come Together - Remastered 2009
+||-------------------------=======================================||
+||5. Let It Be - Remastered 2009
+||-------------------------=======================================||
+||6. In My Life - Remastered 2009
+||-------------------------=======================================||
+||7. Blackbird - Remastered 2009
+||-------------------------=======================================||
+||8. Something - Remastered 2009
+||-------------------------=======================================||
+||9. Hey Jude - 2015 Mix
+||-------------------------=======================================||
+||10. I Want To Hold Your Hand - Remastered 2009
+||-------------------------=======================================||
+||                        @===========@                           ||
+||========================@The Beatles@===========================||
+||========================@===========@===========================||
+
+
+o/p type-5:
+
+PS C:\Users\hp\PycharmProjects\CS50_pythonProg_hav> python  Spotify_req_search.py Beatles   
+you enter the Artist-name only [Basic-search for top-tracks will be initiated; with default-Country-code set as :IN(INDIA)]
+Artist-name: Beatles
+Here we successfuly found Artist with name: The Beatles 
+And gona retrive top-tracks [in country bydefault: IN] for Artist-id: 3WrFJ7ztbogyGnTHbHJFl2
+||========================@===========@===========================||
+||========================@The Beatles@===========================||
+||                        @===========@                           ||
+|| These are top-tracks of The Beatles in Bydefault country:IN :- ||
+||-------------------------=======================================||
+||1. Here Comes The Sun - Remastered 2009
+||-------------------------=======================================||
+||2. Yesterday - Remastered 2009
+||-------------------------=======================================||
+||3. Twist And Shout - Remastered 2009
+||-------------------------=======================================||
+||4. Come Together - Remastered 2009
+||-------------------------=======================================||
+||5. Let It Be - Remastered 2009
+||-------------------------=======================================||
+||6. In My Life - Remastered 2009
+||-------------------------=======================================||
+||7. Blackbird - Remastered 2009
+||-------------------------=======================================||
+||8. Something - Remastered 2009
+||-------------------------=======================================||
+||9. Hey Jude - 2015 Mix
+||-------------------------=======================================||
+||10. I Want To Hold Your Hand - Remastered 2009
+||-------------------------=======================================||
+||                        @===========@                           ||
+||========================@The Beatles@===========================||
+||========================@===========@===========================||
+'''
