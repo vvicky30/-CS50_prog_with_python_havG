@@ -3,3 +3,4 @@
 /workspace.xml
 # for ignoring Virtual python env
 cs50pyenv/
+.env
