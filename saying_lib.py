@@ -5,6 +5,14 @@
    
 # here i am going to make a liberary and name of that liberary is simply the name of this python file which's 'saying_lib'
 
+#all these for checking purposes we have to create here  main fn as well. 
+def main():
+    
+  yourName = What_name()
+  print(greetings_to_name(yourName))
+  print(goodbye_to_name(yourName))
+
+
 
 def What_name():
    name_lis =[] # initialized name-list which will fetch name and surname as well(if entered by user )
@@ -46,7 +54,22 @@ def goodbye_to_name(name):
          
       return("!!...[You Entered Your Full-Name] \nHope you use our 'Saying_library' soon")   
    
-    
-yourName = What_name()
-print(greetings_to_name(yourName))
-print(goodbye_to_name(yourName))
+
+# for illustation purposes 
+#main() # illustration-stage
+
+# now our liberary is complete here, but there's one catch and that catch is whhen while importing this saying-liberary,
+# specifiaclly while doing that we import greetings_to_name module only to another program for making greetings msgs to specified name 
+# then it ultimately initiate method greetings_to_name as well as the goodbye method for that specified name 
+# as behind the scene after importing saying-liberary's module (here greetings_to_name) python interepretor starts reading from left to right and top to bottom,
+# where it eventually encountered with main()[main-fn]-calling in which both methods called for testing purposes , 
+# and that's the reson while importing specific modulle/method (here greetings_to_name) from saying-lib still in that program it will call all the methods corresponds to main-fn definition where we call each module.
+# so for resolving this problem we have to specify that while importing each module for respective task we shouldn't excecute main-fn in liberary's source code.
+# so here in liberary's source code we have to specify that when main should be excecute and when is not 
+
+# here 's the way to specify that 
+if __name__ == "__main__" :   # it means if we excecute this file which's source-code of saying-liberary through commandline simply then name will be equals to "main" [condtion will be true]
+                             # and this main will excecute if this source-code execute through importing it in another program then name will not be equals to 'main' and this main(lib's source-code main will not be execute). 
+   main()
+
+   
