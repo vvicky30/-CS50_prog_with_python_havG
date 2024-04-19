@@ -4,7 +4,7 @@
 from sys import argv
 
 
-def main():
+def main():  # here this main function we're using for experiments purpose ..like to check whether functions of this module are running fine or not  
     
     msg = argv[1:]  # first here we going to save the message given by user through command-line in this msg var
 
@@ -94,9 +94,10 @@ def pepe_say(message):
     our_pepe()
     
     
-
-
-main()
+# as this is module that in future we going to use by import and call its specific function for specific task , so that time, we do'nt want to execute main()[which's here we made for general testing of this module].
+if __name__ == "__main__":
+    
+    main()
 
 '''
 o/p:
