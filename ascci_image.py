@@ -6,7 +6,7 @@ image = Image.open(image_path)
 
 # Convert the image to grayscale and resize
 image_gray = image.convert("L")
-image_gray_resized = image_gray.resize((50, 50))
+image_gray_resized = image_gray.resize((60, 60))
 
 # Define ASCII characters representing different intensity levels
 ascii_chars = "@%#*+=-:. "
