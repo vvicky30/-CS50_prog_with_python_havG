@@ -1,7 +1,7 @@
 def main(): # for testing porpose only 
-    # here we're making the string variable in b/w its also contains 'break' keyword 
+    # here we're making the string variable in b/w its also contains 'cut' keyword 
     #whenever corsor encounters this keyword, during traversing this string before and after this keyword it will be build the two seperate sentences 
-    # by combining those bunch of words before and after 'break' keyword 
+    # by combining those bunch of words before and after 'cut' keyword 
     txt= "Hello my name is Sphinix Herodotous. break I am here to test the pepe_say voice module, break this should be the last sentence of test-string: 'txt'."
     text_words = txt.split() # in this test string we're splitting it into numerous words
                       # each words now will be acts as element of the list which is going to be processed through dynamic_bubble function 
@@ -17,7 +17,7 @@ def dynamic_bubble(lis_tobe_process):
     msg_sentences = []
     temp_sentence = []
     for words in lis_tobe_process:
-        if words == "break": #here nl stands for newline (coder defined)
+        if words == "cut": #here nl stands for newline (coder defined)
             # then we going to concatenated the temp_sentence list to msg_sentence list
             msg_sentences.append(" ".join(temp_sentence)) #join list means concatenating a list of strings with a specified delimiter to form a string.[here we use space as delimiter] not using coma as we're making sentence with all those words.
             #join() function to join a list of strings. This function takes iterable as argument or List is an interable, 
