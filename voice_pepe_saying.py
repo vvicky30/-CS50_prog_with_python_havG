@@ -27,7 +27,8 @@ Hence, PyAudio is a necessary dependency for recording audio through the microph
 
 """
 import speech_recognition as sr 
-
+from module_for_voicepepe import pepe_say
+import cowsay
 def main():
     listen_then_recognize()
     
@@ -56,7 +57,26 @@ def listen_then_recognize():
     the __exit__() method of the context manager (in this case, the Microphone instance) is still called, allowing for proper cleanup of resources, such as releasing the microphone.
     '''
     with sr.Microphone() as source:
-        print("we're currently using your Default microphone \n Listening...Go ahead!!")
+        print(""" 
+  ⠀⠀⠀⠀ ⠀⠀⠀   ⠀⠀⠀  ⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀   ⠀⠀ ⠀ ⠠⠶⠿⠿⣿⣿⠿⠿⠶⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀   ⠀⠀⠀ ⠀ ⠤⠤⠤⠤⣿⣿⠤⠤⠤⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀   ⠀⠀⠀⠀ ⠀ ⠤⠤⠤⠤⣿⣿⠤⠤⠤⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀     ⢀⣀⣀⣀⣀ ⠀⠶⠶⠶⠶⠿⠿⠶⠶⠶⠶⠀⣀⣀⣀⣀⡀⠀⠀⠀⠀
+⠀⠀⠀     ⠀⠈⠉⠛⠉⠉⠀⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠀⠉⠉⠛⠉⠁⠀⠀
+𝙒𝙚'𝙧𝙚 𝙘𝙪𝙧𝙧𝙚𝙣𝙩𝙡𝙮 𝙪𝙨𝙞𝙣𝙜 𝙮𝙤𝙪𝙧 𝘿𝙚𝙛𝙖𝙪𝙡𝙩 𝙢𝙞𝙘𝙧𝙤𝙥𝙝𝙤𝙣𝙚⠀⠀
+⠀⠀   ⠀ ⠀⠀ ⠀⣶⠀⠀⠀⣶⣶⣶⣶⡆⢰⣶⣶⣶⣶⠀⠀⠀⣶⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀    ⠀⠀ ⣿⡀⠀⠀⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⠀⠀⢸⡟⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀    ⠀ ⢹⡇⠀⠀⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⠀⠀⣼⠇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀    ⠀ ⠈⢿⡄⠀⠈⠻⢿⣿⡇⢸⣿⡿⠟⠁⠀⣰⡟⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀   ⠀⠀ ⠀ ⠈⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀   ⠀⠀ ⠀ ⠀⠈⠛⠷⠶⢶⣶⣶⡶⠶⠾⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀   ⠀⠀⠀ ⠀ ⠀⠀⠀⠀⢸⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀   ⠀  ⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠀
+         𝕃𝕚𝕤𝕥𝕖𝕟𝕚𝕟𝕘...𝔾𝕠 𝕒𝕙𝕖𝕒𝕕!!
+            ⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉
+        """)
+
         
         #adjusting the recogniser sensitivity to ambient noise
         recogniser.adjust_for_ambient_noise(source)
@@ -65,15 +85,15 @@ def listen_then_recognize():
     try:
          # Using Google Web Speech API to recognize the audio and transcribe it 
         text = recogniser.recognize_google(audio)
-        print("you said: "+ text)
+        pepe_say(text)
     except sr.UnknownValueError:
-        print("Google Speech Recognition could not understand you ..please try again")
+        cowsay.cow("Google Speech Recognition could not understand you ..please try again")
     except sr.RequestError as e:
-        print(f"Could not request results from Google Speech Recognition service; {e}")
-        
+        cowsay.tux(f"Could not request results from Google Speech Recognition service; {e}")
         
 if __name__ == "__main__":
     main()
+    
 
 '''
 we're unusually going to encounter error like this:"ModuleNotFoundError: No module named 'disutils'" generally disutils module installed bydefault in python. 
