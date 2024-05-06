@@ -17,4 +17,3 @@ file.close()# its compulsory to close a file once we're finished iteracting with
 # there's another method to open file in a way that once a file open (in any permission mode ) and then once a user completed iteracting (appending,writing  & reading etc ) with file ,
 #by using this method , it will automatially close the file , we don't have to mention in a code for it, explicitly.
 #[refer to file: With_file.py]
- 
