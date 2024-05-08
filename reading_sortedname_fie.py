@@ -8,7 +8,7 @@ with open("with_name.txt") as file :
     
 # now  going to print in sorted way 
 for names in sorted(name_lis):
-    print(names)
+    print(f"Hello, {names}")  # with greetings 
 
 
 print("-------there's another approach as well..we can direclt sorted file as well")# this approach not that much prefeeered by developers 
@@ -20,11 +20,11 @@ with open("with_name.txt") as file :
         
 '''
 o/p:
-Skrillix hellios
- helmand kilochock
-Crolina Camroon
-Precarious Ferriera
-Sphinix Herodotous
+Hello,    Skrillix hellios
+Hello,  helmand kilochock
+Hello, Crolina Camroon
+Hello, Precarious Ferriera
+Hello, Sphinix Herodotous
 -------there's another approach as well..we can direclt sorted file as well
    Skrillix hellios
  helmand kilochock
