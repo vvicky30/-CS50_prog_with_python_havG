@@ -9,7 +9,7 @@ In the context of working with CSV files, it's often recommended to use newline=
 when working with the csv module to prevent double spacing between rows when writing to CSV files, 
 especially on Windows systems. This ensures consistent behavior across different platforms.
 '''
-#This below script creates a CSV file named "experiment.csv" with three columns: 'Name', 'Age', and 'Country', and three rows of data.
+#This below script creates a CSV file named "experiment.csv" with three columns: 'Name', 'Age', and 'Country', and five rows of data.
 import csv
 # first we import standard csv module of python 
 
