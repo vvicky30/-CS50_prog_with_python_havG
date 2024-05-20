@@ -88,3 +88,20 @@ Meow!
 Meow!
 Meow!
 '''
+
+# example  here how should we write docstring desicated to function's functionality and arguments type description
+'''
+def meow(n:int)-> str:
+    """
+    Meow! n times.
+    :param n: Number of times to Meow!
+    :Type n : int
+    :raise : TypeError if n is not an int
+    :return : A string of 'Meow!', one per line
+    :rtype: str
+    """ 
+    return "Meow! \n" * n  
+
+number: int = int(input("what's number: "))
+
+'''
