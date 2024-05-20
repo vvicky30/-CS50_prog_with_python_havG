@@ -64,9 +64,6 @@ Found 2 errors in 1 file (checked 1 source file)
 // second error is that it's not assigning anything meaning 'None' to the variable m here
   
 '''
-
-'''
-
 # this times we resolve above type errors , this time fn will return hinted str type value 
 # and m- variable will be assigned with str-type string 
 def meow(n:int)-> str:   # n should be the int , so we hinted it as of int class here like this 'n:int'
@@ -77,6 +74,7 @@ number: int = int(input("what's number: "))  # and here we hinted number to be o
 
 m:str = meow(number)   # as function should ideally return 'meow' of str-type, this variable should be of type str only
 print(m, end="")  
+'''
 
 #now we tried to run a above code with mypy :
 mypy Meow.py
@@ -84,4 +82,9 @@ o/p> Success: no issues found in 1 source file
 // no isseues related to type-error found in this code now 
 // as all variables and functions with hinted repective d-type satisfied while assigning values and retruning values
 
+o/p on console :
+what's number: 3
+Meow!
+Meow!
+Meow!
 '''
