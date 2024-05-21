@@ -1,4 +1,4 @@
-#let make cli-program to display meow (times of meow user enter)
+#let make cli-program to display meow (times of meow user enter) first by conventional method and then by argparser
 
 import sys
 
