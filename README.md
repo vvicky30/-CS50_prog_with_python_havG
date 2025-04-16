@@ -1,5 +1,5 @@
-Feature | Python 2 | Python 3
-
+Feature  |    Python 2    |    Python 3
+================================================================================
 Print | print "text" | print("text")
 
 Division | 5/2 = 2 | 5/2 = 2.5, use // for integer division
